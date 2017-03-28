@@ -1,0 +1,12 @@
+function changeCurrency(currency){if(currency=='eur'){$("#currencyDropdown").empty().append('<i class="fa fa-eur"></i> EUR <span class="caret"></span>');$('[aria-labelledby="currencyDropdown"]').empty().append('<li><a onclick="changeCurrency(\'usd\')" href="#">USD</a></li> \
+                                            <li><a onclick="changeCurrency(\'gbp\')" href="#">GBP</a></li>');}
+else if(currency=='usd'){$("#currencyDropdown").empty().append('<i class="fa fa-usd"></i> USD <span class="caret"></span>');$('[aria-labelledby="currencyDropdown"]').empty().append('<li><a onclick="changeCurrency(\'eur\')" href="#">EUR</a></li> \
+                                            <li><a onclick="changeCurrency(\'gbp\')" href="#">GBP</a></li>');}
+else if(currency=='gbp'){$("#currencyDropdown").empty().append('<i class="fa fa-gbp"></i> GBP <span class="caret"></span>');$('[aria-labelledby="currencyDropdown"]').empty().append('<li><a onclick="changeCurrency(\'usd\')" href="#">USD</a></li> \
+                                            <li><a onclick="changeCurrency(\'eur\')" href="#">EUR</a></li>');}
+$("#current-currency").val(currency);calculatePrice();eraseCookie('currency_code');createCookie('currency_code',currency,300);}
+function createCookie(name,value,days){if(days){var date=new Date();date.setTime(date.getTime()+(days*24*60*60*1000));var expires="; expires="+date.toGMTString();}
+else var expires="";document.cookie=name+"="+value+expires+"; path=/";}
+function readCookie(name){var nameEQ=name+"=";var ca=document.cookie.split(';');for(var i=0;i<ca.length;i++){var c=ca[i];while(c.charAt(0)==' ')c=c.substring(1,c.length);if(c.indexOf(nameEQ)==0)return c.substring(nameEQ.length,c.length);}
+return null;}
+function eraseCookie(name){createCookie(name,"",-1);}
